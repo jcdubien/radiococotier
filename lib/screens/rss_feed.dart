@@ -125,36 +125,8 @@ class _FirstScreenState extends State<FirstScreen> {
         ],
         centerTitle: true,
       ),
-      drawer: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.teal,
-              shape: BoxShape.circle,
-
-            ),
-
-            child: Text('Naviguez'),
-          ),
-          ListTile(
-            title: const Text('Item 1'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Item 2'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
+      drawer:
+          CustomDrawer(),
       body:Stack(
         children: [
           if (isLoading==false) ListView.builder(

@@ -16,7 +16,7 @@ class CustomBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    int _selectedindex = 4;
+    int _selectedindex = 0;
 
     return BottomNavigationBar(
 
@@ -29,33 +29,7 @@ class CustomBottomAppBar extends StatelessWidget {
 
       items: const <BottomNavigationBarItem> [
 
-    BottomNavigationBarItem(
 
-        icon: Icon(Icons.home),
-        label: 'Accueil',
-      backgroundColor: kPrimaryColor,
-      tooltip: 'Accueil',
-
-      ),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.category),
-        label: 'Categories',
-      tooltip: 'Catégories',
-      backgroundColor: kCategoryColor
-      //backgroundColor: kPrimaryColor,
-      ),
-    BottomNavigationBarItem(
-    icon: Icon(Icons.youtube_searched_for),
-    label: 'Emissions',
-      tooltip: 'Emissions',
-      backgroundColor: kVideosColor,
-    ),
-    BottomNavigationBarItem(
-    icon: Icon(Icons.looks),
-    label: 'Recrutement',
-      tooltip:'Recrutement',
-      backgroundColor: kRecruitColor,
-    ),
     BottomNavigationBarItem(
     icon: Icon(Icons.contact_page),
     label: 'Contact',
@@ -136,7 +110,7 @@ class CustomDrawer extends StatelessWidget {
       children: [
         DrawerHeader(
 
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.teal,
             shape: BoxShape.rectangle,
 
@@ -149,7 +123,7 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
         ListTile(
-          title: const Text('Item 1', style: TextStyle(color: Colors.black)),
+          title: const Text('Catégories', style: TextStyle(color: Colors.black)),
 
           onTap: () {
             // Update the state of the app.
@@ -158,7 +132,15 @@ class CustomDrawer extends StatelessWidget {
           },
         ),
         ListTile(
-          title: const Text('Item 2'),
+          title: const Text('Emissions'),
+          onTap: () {
+            // Update the state of the app.
+            // ...
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          title: const Text('Recrutement'),
           onTap: () {
             // Update the state of the app.
             // ...
