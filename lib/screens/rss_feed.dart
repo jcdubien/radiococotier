@@ -109,7 +109,7 @@ class _FirstScreenState extends State<FirstScreen> {
         ),
         title: Column(
           children: const [
-            Text('Radio Cocotier',style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)),
+            Text('RadioCocotier',style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)),
             Text('Actualités en Guadeloupe et Martinique', style: TextStyle(fontSize: 14.0),),
           ],
         ),
