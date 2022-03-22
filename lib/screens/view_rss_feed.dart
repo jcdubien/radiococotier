@@ -6,6 +6,7 @@ import 'rss_feed.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:radio_coctier/custom_widgets.dart';
 
 class ViewRssScreen extends StatefulWidget {
   final  RssFeed;
@@ -38,6 +39,8 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
         title: Text(RssFeed['title']),
         centerTitle: true,
       ),
+      drawer:
+      CustomDrawer(),
       body:Stack(
         children: [
           Container(
@@ -93,7 +96,7 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
 
         ],
       ) ,
-
+      bottomNavigationBar:  const CustomBottomAppBar(),
     );
   }
 }

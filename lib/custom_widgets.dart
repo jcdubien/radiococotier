@@ -98,11 +98,16 @@ class BottomButton extends StatelessWidget {
   }
 }
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -119,11 +124,16 @@ class CustomDrawer extends StatelessWidget {
           ),
 
           child: Center(
-              child: Image.asset('assets/RCheader.png')
+              child: Image.asset('assets/RCheader.png'),
           ),
         ),
         ListTile(
           title: const Text('Catégories', style: TextStyle(color: Colors.black)),
+
+          leading: Icon(Icons.category),
+          tileColor: Colors.blueGrey,
+
+
 
           onTap: () {
             // Update the state of the app.
@@ -133,6 +143,8 @@ class CustomDrawer extends StatelessWidget {
         ),
         ListTile(
           title: const Text('Emissions'),
+          leading: Icon(Icons.youtube_searched_for),
+          tileColor: Colors.white,
           onTap: () {
             // Update the state of the app.
             // ...
@@ -141,6 +153,8 @@ class CustomDrawer extends StatelessWidget {
         ),
         ListTile(
           title: const Text('Recrutement'),
+          leading: Icon(Icons.work),
+          tileColor: Colors.white,
           onTap: () {
             // Update the state of the app.
             // ...
