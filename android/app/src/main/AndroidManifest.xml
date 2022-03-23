@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.digitaliscaraibes.radio_cocotier">
+    package="com.digitaliscaraibes.radio_coctier">
    <application
         android:label="RadioCocotier"
         android:name="${applicationName}"

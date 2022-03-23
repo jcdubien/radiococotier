@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:radio_coctier/custom_widgets.dart';
+import 'bootstrap_view.dart';
 
 class ViewRssScreen extends StatefulWidget {
   final  RssFeed;
@@ -32,15 +33,14 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
           icon:Icon(Ionicons.arrow_back),
           onPressed: ()=> Navigator.pushReplacement(context,
               MaterialPageRoute(builder:
-                  (context) => FirstScreen(title: '')
+                  (context) => Bootsrap(),
               )
           ),
         ),
         title: Text(RssFeed['title']),
         centerTitle: true,
       ),
-      drawer:
-      CustomDrawer(),
+
       body:Stack(
         children: [
           Container(

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'screens/rss_feed.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:radio_coctier/screens/bootstrap_view.dart';
 
 
 
@@ -15,13 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Radio Cocotier',
+      title: 'RadioCocotier',
       theme :  ThemeData(
       // UI
       brightness: Brightness.light,
       primaryColor: Color(0XFF18785D),
       scaffoldBackgroundColor: Color(0XFFFFFFFF),
       appBarTheme: AppBarTheme().copyWith(backgroundColor: const Color(0XFF18785D)),
+
 
 
     ),
@@ -43,7 +45,8 @@ class SplashScreenState extends State<MyHomePage> {
     Timer(Duration(seconds: 5),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
-                (context) => const FirstScreen(title: 'Derniers posts')
+                //(context) => const FirstScreen(title: 'Derniers posts')
+                (context) => const Bootsrap(),
             )
         )
     );

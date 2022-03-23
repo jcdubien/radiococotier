@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:radio_coctier/screens/constants.dart';
+import 'package:radio_coctier/constants.dart';
 import 'package:radio_coctier/screens/rss_feed.dart';
 import 'screens/vidéos.dart';
 import 'screens/rss_feed.dart';
@@ -34,8 +34,14 @@ class CustomBottomAppBar extends StatelessWidget {
     icon: Icon(Icons.contact_page),
     label: 'Contact',
       tooltip:'Nous contacter',
-      backgroundColor: kContactColor,
+      backgroundColor: kPrimaryColor,
     ),
+    BottomNavigationBarItem(
+    icon: Icon(Icons.contact_page),
+    label: 'Home',
+    tooltip:'Accueil',
+    backgroundColor: kContactColor,
+  ),
     BottomNavigationBarItem(
     icon: Icon(Icons.contact_mail),
     label: 'A propos',
@@ -111,9 +117,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return ListView(
+
+
       padding: EdgeInsets.zero,
       children: [
         DrawerHeader(
+
 
           decoration: const BoxDecoration(
             color: Colors.teal,
@@ -130,7 +139,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ListTile(
           title: const Text('Catégories', style: TextStyle(color: Colors.black)),
 
-          leading: Icon(Icons.category),
+          leading: const Icon(Icons.category),
           tileColor: Colors.blueGrey,
 
 

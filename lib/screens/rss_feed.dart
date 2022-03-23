@@ -11,7 +11,7 @@ import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'view_rss_feed.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:radio_coctier/custom_widgets.dart';
 
 
@@ -100,7 +100,7 @@ class _FirstScreenState extends State<FirstScreen> {
     const transitionType=ContainerTransitionType.fadeThrough;
 
     return Scaffold(
-      appBar: AppBar(
+       /*AppBar(
         elevation: 8.0,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -124,9 +124,8 @@ class _FirstScreenState extends State<FirstScreen> {
 
         ],
         centerTitle: true,
-      ),
-      drawer:
-          CustomDrawer(),
+      ),*/
+      drawer: const CustomDrawer(),
       body:Stack(
         children: [
           if (isLoading==false) ListView.builder(
@@ -179,11 +178,11 @@ class _FirstScreenState extends State<FirstScreen> {
                 );
               }
 
-          ) else Center(child: CircularProgressIndicator(),),
+          ) else const Center(child: CircularProgressIndicator(),),
 
         ],
       ) ,
-      gi
+      bottomNavigationBar:  const CustomBottomAppBar(),
 
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webfeed/webfeed.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'package:http/http.dart';
 
 class VideosScreen extends StatefulWidget {
