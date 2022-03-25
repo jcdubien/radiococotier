@@ -96,7 +96,7 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
 
         ],
       ) ,
-      bottomNavigationBar:  const CustomBottomAppBar(),
+      // bottomNavigationBar:  const CustomBottomAppBar(),
     );
   }
 }
