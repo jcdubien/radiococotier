@@ -19,10 +19,12 @@ class MyApp extends StatelessWidget {
       title: 'RadioCocotier',
       theme :  ThemeData(
       // UI
+      primarySwatch: Colors.blue,
       brightness: Brightness.light,
       primaryColor: Color(0XFF18785D),
       scaffoldBackgroundColor: Color(0XFFFFFFFF),
-      appBarTheme: AppBarTheme().copyWith(backgroundColor: const Color(0XFF18785D)),
+      appBarTheme: AppBarTheme().copyWith(backgroundColor: const Color(0XFFD3D4D6)),
+      fontFamily: 'Montserrat',
 
 
 
