@@ -182,7 +182,7 @@ class _FirstScreenState extends State<FirstScreen> {
 
         ],
       ) ,
-      bottomNavigationBar:  const CustomBottomAppBar(),
+
 
     );
   }

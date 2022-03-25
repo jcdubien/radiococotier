@@ -6,7 +6,7 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body : Center(child:Text('Contact')),
+      body : Center(child:Text('Catégories')),
     );
   }
 }
