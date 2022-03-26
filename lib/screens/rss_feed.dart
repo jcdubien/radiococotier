@@ -40,29 +40,6 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
 
-  /*static BannerAd myBanner = BannerAd(
-    adUnitId: InterstitialAd.testAdUnitId,
-    size: AdSize.banner,
-    request: AdRequest(),
-    listener: BannerAdListener(),
-  );
-
-  final BannerAdListener listener = BannerAdListener(
-    // Called when an ad is successfully received.
-    onAdLoaded: (Ad ad) => print('Ad loaded.'),
-    // Called when an ad request failed.
-    onAdFailedToLoad: (Ad ad, LoadAdError error) {
-      // Dispose the ad here to free resources.
-      ad.dispose();
-      print('Ad failed to load: $error');
-    },
-    // Called when an ad opens an overlay that covers the screen.
-    onAdOpened: (Ad ad) => print('Ad opened.'),
-    // Called when an ad removes an overlay that covers the screen.
-    onAdClosed: (Ad ad) => print('Ad closed.'),
-    // Called when an impression occurs on the ad.
-    onAdImpression: (Ad ad) => print('Ad impression.'),
-  );*/
   bool isAdVisible=true;
   bool isLoading=false;
   late RssFeed rss=RssFeed();
@@ -71,7 +48,6 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   void initState() {
     loadData();
-
     super.initState();
   }
 
@@ -100,34 +76,12 @@ class _FirstScreenState extends State<FirstScreen> {
     const transitionType=ContainerTransitionType.fadeThrough;
 
     return Scaffold(
-       /*AppBar(
-        elevation: 8.0,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(30),
-          ),
-        ),
-        title: Column(
-          children: const [
-            Text('RadioCocotier',style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)),
-            Text('Actualités en Guadeloupe et Martinique', style: TextStyle(fontSize: 14.0),),
-          ],
-        ),
-        actions:<Widget>[
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0XFF18785D),
-                onSurface: Colors.red,
-              ),
-              onPressed: () => loadData(),
-              child: Icon(Ionicons.refresh_circle)),
 
-        ],
-        centerTitle: true,
-      ),*/
-      drawer: const CustomDrawer(),
+
       body:Stack(
+
         children: [
+
           if (isLoading==false) ListView.builder(
               itemCount: rss.items!.length,
               itemBuilder: (BuildContext context, index) {

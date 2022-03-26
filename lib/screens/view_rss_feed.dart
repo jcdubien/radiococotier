@@ -33,7 +33,7 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
           icon:Icon(Ionicons.arrow_back),
           onPressed: ()=> Navigator.pushReplacement(context,
               MaterialPageRoute(builder:
-                  (context) => Bootsrap(),
+                  (context) => Bootstrap(),
               )
           ),
         ),

@@ -6,14 +6,14 @@ import'contact_screen.dart';
 import 'about_screen.dart';
 import 'categories_screen.dart';
 
-class Bootsrap extends StatefulWidget {
-  const Bootsrap({Key? key}) : super(key: key);
+class Bootstrap extends StatefulWidget {
+  const Bootstrap({Key? key}) : super(key: key);
 
   @override
-  State<Bootsrap> createState() => _BootsrapState();
+  State<Bootstrap> createState() => _BootstrapState();
 }
 
-class _BootsrapState extends State<Bootsrap> {
+class _BootstrapState extends State<Bootstrap> {
 
   int _selectedIndex=1;
 
@@ -29,15 +29,28 @@ class _BootsrapState extends State<Bootsrap> {
             bottom: Radius.circular(30),
           ),
         ),
-        title: Column(
+        title: SizedBox(
+
+          child: Image.asset('assets/Bleu-alpha3.png',fit: BoxFit.cover,),
+
+        ),
+        /*title: Column(
           children: const [
             Text('RadioCocotier',style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)),
             Text('Actualités en Guadeloupe et Martinique', style: TextStyle(fontSize: 14.0),),
           ],
-        ),
+        ),*/
 
         centerTitle: true,
       ),
+      drawer:
+      Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/Tel-bleu1.png"),
+                fit: BoxFit.cover,
+              ),),
+          child: const CustomDrawer()),
       body: PageView(
 
         controller: _pageController,
@@ -58,6 +71,8 @@ class _BootsrapState extends State<Bootsrap> {
           unselectedItemColor: Colors.black,
           onTap : (int index) => setState(() {
             _selectedIndex = index;
+            _pageController.jumpToPage(
+                _selectedIndex);
 
           }),
           currentIndex: _selectedIndex,

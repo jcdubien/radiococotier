@@ -121,7 +121,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
       padding: EdgeInsets.zero,
       children: [
-        DrawerHeader(
+        /*DrawerHeader(
 
 
           decoration: const BoxDecoration(
@@ -135,14 +135,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
           child: Center(
               child: Image.asset('assets/RCheader.png'),
           ),
-        ),
+        ),*/
         ListTile(
           title: const Text('Catégories', style: TextStyle(color: Colors.black)),
 
           leading: const Icon(Icons.category),
-          tileColor: Colors.blueGrey,
-
-
 
           onTap: () {
             // Update the state of the app.
@@ -153,7 +150,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ListTile(
           title: const Text('Emissions'),
           leading: Icon(Icons.youtube_searched_for),
-          tileColor: Colors.white,
+
           onTap: () {
             // Update the state of the app.
             // ...
@@ -163,7 +160,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         ListTile(
           title: const Text('Recrutement'),
           leading: Icon(Icons.work),
-          tileColor: Colors.white,
+
           onTap: () {
             // Update the state of the app.
             // ...

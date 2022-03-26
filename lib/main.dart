@@ -6,6 +6,7 @@ import 'package:radio_coctier/screens/bootstrap_view.dart';
 
 
 
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   //MobileAds.instance.initialize();
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       scaffoldBackgroundColor: Color(0XFFFFFFFF),
       appBarTheme: AppBarTheme().copyWith(backgroundColor: const Color(0XFFD3D4D6)),
       fontFamily: 'Montserrat',
+
 
 
 
@@ -48,7 +50,7 @@ class SplashScreenState extends State<MyHomePage> {
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 //(context) => const FirstScreen(title: 'Derniers posts')
-                (context) => const Bootsrap(),
+                (context) => const Bootstrap(),
             )
         )
     );

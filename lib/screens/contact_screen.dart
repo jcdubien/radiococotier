@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class ContactScreen extends StatelessWidget {
   ContactScreen({Key? key}) : super(key: key);
@@ -13,8 +16,8 @@ class ContactScreen extends StatelessWidget {
       backgroundColor: const Color(0xfff5f5fd),
       body: Center(
         child: Container(
-          height: 450,
-          width: 400,
+          /*height: 450,
+          width: 400,*/
           margin: const EdgeInsets.symmetric(
             horizontal: 40,
             vertical: 20,
@@ -35,68 +38,85 @@ class ContactScreen extends StatelessWidget {
               ]),
           child: Form(
             key: _formKey,
-            child: Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text('Nous contacter',
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  TextFormField(
-                    controller: nameController,
-                    decoration: const InputDecoration(hintText: 'Nom'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '*Requis';
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: emailController,
-                    decoration: const InputDecoration(hintText: 'Email'),
-                    validator: (email) {
-                      if (email == null || email.isEmpty) {
-                        return 'Requis*';
-                      } else if (!EmailValidator.validate(email)) {
-                        return 'Merci d entrer un mail valide';
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: messageController,
-                    decoration: const InputDecoration(hintText: 'Message'),
-                    maxLines: 5,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return '*Requis';
-                      }
-                      return null;
-                    },
-                  ),
-                  SizedBox(
-                    height: 45,
-                    width: 110,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                          primary: Colors.white,
-                          backgroundColor: const Color(0xff151534),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40))),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          //TODO: send email
-                          nameController.clear();
-                          emailController.clear();
-                          messageController.clear();
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text('Nous contacter',
+                    style:
+                    TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                TextFormField(
+                  controller: nameController,
+                  decoration: const InputDecoration(hintText: 'Nom'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return '*Requis';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(hintText: 'Email'),
+                  validator: (email) {
+                    if (email == null || email.isEmpty) {
+                      return 'Requis*';
+                    } else if (!EmailValidator.validate(email)) {
+                      return 'Merci d entrer un mail valide';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: messageController,
+                  decoration: const InputDecoration(hintText: 'Message'),
+                  maxLines: 5,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return '*Requis';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(
+                  height: 45,
+                  width: 110,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: const Color(0xff151534),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(40))),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print(nameController.text);
+                        print(emailController.text);
+                        print(messageController.text);
+
+                        nameController.clear();
+                        emailController.clear();
+                        messageController.clear();
+
+                        String? encodeQueryParameters(Map<String, String> params) {
+                          return params.entries
+                              .map((e) => '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                              .join('&');
                         }
-                      },
-                      child: const Text('Envoyer', style: TextStyle(fontSize: 16)),
-                    ),
+
+                        final Uri emailLaunchUri = Uri(
+                          scheme: 'mailto',
+                          path: 'jcdubien@gmail.com',
+                          query: encodeQueryParameters(<String, String>{
+                            'subject': messageController.text
+                          }),
+                        );
+
+                        launch(emailLaunchUri.toString());
+                      }
+                    },
+                    child: const Text('Envoyer', style: TextStyle(fontSize: 16)),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

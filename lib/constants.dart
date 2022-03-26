@@ -2,6 +2,8 @@ import 'dart:ui';
 
 const String kRssUrl = 'https://www.radiococotier.fr/feed/?nocache123';
 const String kYoutubeUrl = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCLsLEhM8OksZp1b7aZsqPSQ';
+Uri kUri = Uri.parse(kRssUrl);
+
 
 const kPrimaryColor = Color(0XFFB3B2B7);
 const kCategoryColor = Color(0XFF1A1A1A);
