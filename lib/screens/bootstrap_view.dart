@@ -45,6 +45,7 @@ class _BootstrapState extends State<Bootstrap> {
       ),
       drawer:
       Container(
+
           decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/Tel-bleu1.png"),
@@ -64,7 +65,12 @@ class _BootstrapState extends State<Bootstrap> {
 
         ],
 
+        onPageChanged: (page) {
+          setState(() {
+            _selectedIndex = page;
 
+          });
+        }
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.teal,
