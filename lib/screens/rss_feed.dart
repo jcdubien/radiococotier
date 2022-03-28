@@ -47,8 +47,9 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   void initState() {
-    loadData();
+
     super.initState();
+    loadData();
   }
 
   loadData() async {

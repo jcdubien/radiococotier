@@ -137,7 +137,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ),
 
           child: Center(
-              child: Image.asset('assets/RCheader.png'),
+              child: Opacity(opacity: 0.5,child: Image.asset('assets/RCheader.png')),
           ),
         ),
         Column(
@@ -145,20 +145,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
           crossAxisAlignment: CrossAxisAlignment.center,
 
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical:  20.0),
-              child: ListTile(
-                title: const Text('Catégories', style: kDrawerMenuStyle),
 
-                leading: const Icon(Icons.category,color: Colors.white,),
 
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  Navigator.pop(context);
-                },
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical:  20.0),
               child: ListTile(
