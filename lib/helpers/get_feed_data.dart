@@ -6,6 +6,8 @@ import 'package:xml/xml.dart' as xml;
 class GetFeedData {
 
 
+
+
   //Uri url = Uri.parse('https://www.radiococotier.fr/feed/');
 
   Future<List> readFeed(Uri url) async {
@@ -48,7 +50,7 @@ class GetFeedData {
     });
 
 
-    return articles;
+    return  articles;
   }
 
   Future<List> readCategoryList(Uri url) async {

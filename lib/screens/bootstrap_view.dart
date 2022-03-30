@@ -5,6 +5,9 @@ import 'rss_feed.dart';
 import'contact_screen.dart';
 import 'about_screen.dart';
 import 'categories_screen.dart';
+import 'package:webfeed/webfeed.dart';
+import 'package:radio_coctier/constants.dart';
+import 'package:http/http.dart';
 
 class Bootstrap extends StatefulWidget {
   const Bootstrap({Key? key}) : super(key: key);
@@ -15,9 +18,47 @@ class Bootstrap extends StatefulWidget {
 
 class _BootstrapState extends State<Bootstrap> {
 
-  int _selectedIndex=1;
+  int _selectedIndex=0;
+  bool isLoading=false;
+  late RssFeed rss=RssFeed();
+  //final PageController _pageController = PageController(initialPage: 1);
+  final screens = [
+    //CategoriesScreen(),
+    FirstScreen(title: 'Derniers Posts'),
+    ContactScreen(),
+    AboutScreen(),
+  ];
 
-  final PageController _pageController = PageController(initialPage: 1);
+
+
+  @override
+  void initState() {
+
+    super.initState();
+    loadData();
+  }
+
+
+
+  loadData() async {
+    try {
+      setState(() {
+        isLoading=true;
+      });
+      // This is an open REST API endpoint for testing purposes
+      const API = kRssUrl;
+      final  response = await get(Uri.parse(API));
+      late var channel = RssFeed.parse(response.body);
+
+      setState(() {
+        rss=channel;
+        isLoading=false;
+      });
+    } catch (err) {
+      rethrow;
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +75,7 @@ class _BootstrapState extends State<Bootstrap> {
           child: Image.asset('assets/Bleu-alpha3.png',fit: BoxFit.cover,),
 
         ),
+
         /*title: Column(
           children: const [
             Text('RadioCocotier',style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold)),
@@ -52,7 +94,8 @@ class _BootstrapState extends State<Bootstrap> {
                 fit: BoxFit.cover,
               ),),
           child: const CustomDrawer()),
-      body: PageView(
+      body: screens[_selectedIndex],
+      /*PageView(
 
         controller: _pageController,
 
@@ -63,32 +106,33 @@ class _BootstrapState extends State<Bootstrap> {
           ContactScreen(),
           AboutScreen(),
 
-        ],
+        ],*/
 
-        onPageChanged: (page) {
+        /*onPageChanged: (page) {
           setState(() {
             _selectedIndex = page;
 
           });
         }
-      ),
+      ),*/
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.teal,
           unselectedItemColor: Colors.black,
+          currentIndex: _selectedIndex,
           onTap : (int index) => setState(() {
             _selectedIndex = index;
-            _pageController.jumpToPage(
-                _selectedIndex);
+            /*_pageController.jumpToPage(
+                _selectedIndex);*/
 
           }),
-          currentIndex: _selectedIndex,
+
           items: const <BottomNavigationBarItem> [
 
-            BottomNavigationBarItem(
+            /*BottomNavigationBarItem(
                 icon: Icon(Icons.category),
                 label: 'Catégorie',
 
-            ),
+            ),*/
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Accueil',

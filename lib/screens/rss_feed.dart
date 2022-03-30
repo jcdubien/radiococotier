@@ -4,6 +4,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/widgets.dart';
+import 'package:radio_coctier/screens/about_screen.dart';
+import 'package:radio_coctier/screens/categories_screen.dart';
+import 'package:radio_coctier/screens/contact_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -34,6 +37,7 @@ class FirstScreen extends StatefulWidget {
 
   final String title;
 
+
   @override
   State<FirstScreen> createState() => _FirstScreenState();
 }
@@ -43,6 +47,8 @@ class _FirstScreenState extends State<FirstScreen> {
   bool isAdVisible=true;
   bool isLoading=false;
   late RssFeed rss=RssFeed();
+  int _selectedIndex=1;
+
 
 
   @override
@@ -51,6 +57,8 @@ class _FirstScreenState extends State<FirstScreen> {
     super.initState();
     loadData();
   }
+
+
 
   loadData() async {
     try {
@@ -73,6 +81,7 @@ class _FirstScreenState extends State<FirstScreen> {
 
   @override
   Widget build(BuildContext context) {
+
 
     const transitionType=ContainerTransitionType.fadeThrough;
 
@@ -135,10 +144,46 @@ class _FirstScreenState extends State<FirstScreen> {
 
           ) else const Center(child: CircularProgressIndicator(),),
 
-        ],
-      ) ,
 
+
+        ],
+
+      ) ,
+     /* bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.teal,
+          unselectedItemColor: Colors.black,
+          onTap : (int index) => setState(() {
+            _selectedIndex = index;
+
+
+          }),
+          currentIndex: _selectedIndex,
+          items: const <BottomNavigationBarItem> [
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.category),
+              label: 'Catégorie',
+
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Accueil',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.contact_page),
+              label: 'Nous contacter',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.contact_mail),
+              label: 'A propos',
+            ),
+          ]
+
+      ),
+*/
 
     );
+
+
   }
 }

@@ -118,65 +118,69 @@ class _CustomDrawerState extends State<CustomDrawer> {
   Widget build(BuildContext context) {
 
 
-    return ListView(
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: ListView(
 
 
 
-      padding: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
 
-      children: [
-        DrawerHeader(
-
-
-          decoration: const BoxDecoration(
-            color: Colors.grey,
-            shape: BoxShape.rectangle,
+        children: [
+          /*DrawerHeader(
 
 
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+              shape: BoxShape.rectangle,
 
+
+
+            ),
+
+            child: Center(
+                child: Opacity(opacity: 0.5,child: Image.asset('assets/RCheader.png')),
+            ),
+          ),*/
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+
+            children: [
+
+              const SizedBox(height: 50.0),
+
+
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical:  20.0),
+                child: ListTile(
+                  title: const Text('Emissions',style: kDrawerMenuStyle),
+                  leading: Icon(Icons.youtube_searched_for,color: Colors.white,),
+
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical:  20.0),
+                child: ListTile(
+                  title: const Text('Recrutement',style: kDrawerMenuStyle),
+                  leading: Icon(Icons.work,color: Colors.white,),
+
+                  onTap: () {
+                    //Navigator.push(context, route)
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
+            ],
           ),
 
-          child: Center(
-              child: Opacity(opacity: 0.5,child: Image.asset('assets/RCheader.png')),
-          ),
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-
-          children: [
-
-
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical:  20.0),
-              child: ListTile(
-                title: const Text('Emissions',style: kDrawerMenuStyle),
-                leading: Icon(Icons.youtube_searched_for,color: Colors.white,),
-
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical:  20.0),
-              child: ListTile(
-                title: const Text('Recrutement',style: kDrawerMenuStyle),
-                leading: Icon(Icons.work,color: Colors.white,),
-
-                onTap: () {
-                  // Update the state of the app.
-                  // ...
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          ],
-        ),
-
-      ],
+        ],
+      ),
     );
   }
 }

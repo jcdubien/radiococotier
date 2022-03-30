@@ -22,6 +22,7 @@ import 'package:radio_coctier/helpers/get_feed_data.dart';
 
 
 
+
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen ({Key? key}) : super(key: key);
 
@@ -57,8 +58,10 @@ class _CategoriesScreenState extends State<CategoriesScreen > {
   @override
   Widget build (BuildContext context) {
 
-    Future categories = getCategories();
-    Future  articles = getArticles();
+    var categories = getCategories();
+
+    var articles = getArticles();
+
 
     return Scaffold(
 
@@ -66,7 +69,65 @@ class _CategoriesScreenState extends State<CategoriesScreen > {
 
 
       children: [
-      FutureBuilder<dynamic>(
+/*
+
+
+        if (isLoading==false) ListView.builder(
+            itemCount: articles.length,
+            itemBuilder: (BuildContext context, index) {
+              final item = articles[index];
+              final feedItems={
+                'title':item.title,
+                'content':item.content!.value,
+                'creator':item.dc!.creator,
+                'image': item.content!.images.toList().first.isEmpty?
+                'https://www.radiococotier.fr/wp-content/uploads/2022/02/RadioCocotier-header-dark-mode.png':
+                item.content?.images.toList().first,
+                'link':item.link,
+                'pubDate':item.pubDate,
+                'author':item.dc!.creator
+              };
+              //print(feedItems);
+              return Column(
+                children: [
+                  InkWell(
+
+                      onTap:() => Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder:
+                              (context) => ViewRssScreen(RssFeed: feedItems)
+                          )
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: ListTile(
+                          leading:  Image(image: CachedNetworkImageProvider(item.content!.images.first.toString(),)),
+                          title: Text(item.title.toString()),
+                          subtitle:Row(
+                            children: [
+                              const Icon(Ionicons.time_outline),
+                              Text(DateFormat('MMM dd').format(
+                                  DateTime.parse(
+                                      item.pubDate.toString()))),
+                              const Spacer(),
+                              const Icon(Ionicons.person_outline),
+                              Expanded(child: Text(item.dc!.creator.toString())),
+                              const SizedBox(height: 20.0),
+                            ],
+                          ) ,
+                        ),
+                      )
+                  ),
+                  Divider(),
+                ],
+              );
+            }
+
+        ) else const Center(child: CircularProgressIndicator(),),
+
+
+*/
+
+        FutureBuilder<dynamic>(
       future: categories, // a previously-obtained Future<String> or null
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         List<Widget> children;
@@ -109,7 +170,11 @@ class _CategoriesScreenState extends State<CategoriesScreen > {
           ),
         );
       },
-    )],
-    ));
+    )
+
+      /*Center(
+        child:Text('Categories'),
+      )],*/
+    ]));
   }
 }

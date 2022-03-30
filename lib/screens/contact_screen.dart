@@ -46,6 +46,7 @@ class ContactScreen extends StatelessWidget {
                     TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 TextFormField(
                   controller: nameController,
+                  textInputAction: TextInputAction.next,
                   decoration: const InputDecoration(hintText: 'Nom'),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -57,6 +58,7 @@ class ContactScreen extends StatelessWidget {
                 TextFormField(
                   controller: emailController,
                   decoration: const InputDecoration(hintText: 'Email'),
+                  textInputAction: TextInputAction.next,
                   validator: (email) {
                     if (email == null || email.isEmpty) {
                       return 'Requis*';
@@ -69,6 +71,7 @@ class ContactScreen extends StatelessWidget {
                 TextFormField(
                   controller: messageController,
                   decoration: const InputDecoration(hintText: 'Message'),
+                  textInputAction: TextInputAction.done,
                   maxLines: 5,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -92,9 +95,7 @@ class ContactScreen extends StatelessWidget {
                         print(emailController.text);
                         print(messageController.text);
 
-                        nameController.clear();
-                        emailController.clear();
-                        messageController.clear();
+
 
                         String? encodeQueryParameters(Map<String, String> params) {
                           return params.entries
@@ -111,6 +112,24 @@ class ContactScreen extends StatelessWidget {
                         );
 
                         launch(emailLaunchUri.toString());
+
+                        final snackBar = SnackBar(
+                            content: const Text('Message envoyé'),
+                            /*action: SnackBarAction(
+                            label: 'Undo',
+                            onPressed: () {
+                            // Some code to undo the change.
+                            },
+                            ),*/
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                        nameController.clear();
+                        emailController.clear();
+                        messageController.clear();
                       }
                     },
                     child: const Text('Envoyer', style: TextStyle(fontSize: 16)),
@@ -119,8 +138,11 @@ class ContactScreen extends StatelessWidget {
               ],
             ),
           ),
+
         ),
       ),
+
+
     );
   }
 }
