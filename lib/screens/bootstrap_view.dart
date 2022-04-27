@@ -8,6 +8,7 @@ import 'categories_screen.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:radio_coctier/constants.dart';
 import 'package:http/http.dart';
+import 'last_news.dart';
 
 class Bootstrap extends StatefulWidget {
   const Bootstrap({Key? key}) : super(key: key);
@@ -18,13 +19,14 @@ class Bootstrap extends StatefulWidget {
 
 class _BootstrapState extends State<Bootstrap> {
 
-  int _selectedIndex=0;
+  int _selectedIndex=1;
   bool isLoading=false;
   late RssFeed rss=RssFeed();
   //final PageController _pageController = PageController(initialPage: 1);
   final screens = [
     //CategoriesScreen(),
     FirstScreen(title: 'Derniers Posts'),
+    LastNewsScreen(),
     ContactScreen(),
     AboutScreen(),
   ];
@@ -135,7 +137,10 @@ class _BootstrapState extends State<Bootstrap> {
             ),*/
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Accueil',
+              label: 'Accueil',),
+              BottomNavigationBarItem(
+              icon: Icon(Icons.newspaper_rounded),
+              label: 'News',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.contact_page),
