@@ -4,12 +4,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:radio_coctier/constants.dart';
 
-String token = 'AAAAAAAAAAAAAAAAAAAAADFhbQEAAAAA27dk1f9HiqIEKT9ji0ts4p1V1eU%3DY4G9hPONN9D1EVKmt2fqqmj9NP2EHL9YWwdz8WWushzWzXeAWP';
+String token =
+    'AAAAAAAAAAAAAAAAAAAAADFhbQEAAAAA27dk1f9HiqIEKT9ji0ts4p1V1eU%3DY4G9hPONN9D1EVKmt2fqqmj9NP2EHL9YWwdz8WWushzWzXeAWP';
 
 Future<List<Tweet>> fetchTweets() async {
   List<Tweet> tweets = [];
-  final response =  await http.get(Uri.parse('https://api.twitter.com/2/users/1124645917171359745/tweets'),
-
+  final response = await http.get(
+    Uri.parse('https://api.twitter.com/2/users/1124645917171359745/tweets'),
     headers: {
       "Content-Type": "application/json",
       'Authorization': 'Bearer $token',
@@ -19,18 +20,33 @@ Future<List<Tweet>> fetchTweets() async {
   if (response.statusCode == 200) {
     var data = json.decode(response.body);
     var rest = data["data"] as List;
+    for (int i = 0; i < rest.length; i++) {
+      if (rest[i]["text"][0] == '@' ||
+          rest[i]["text"][0] == '#' ||
+          rest[i]["text"][0] == '!' ||
+          rest[i]["text"][0] == '.' ||
+          rest[i]["text"][0] == '?' ||
+          rest[i]["text"][0] == ';' ||
+          rest[i]["text"][0] == ':' ||
+          rest[i]["text"][0] == ',' ||
+          rest[i]["text"][0] == '\n' ||
+          rest[i]["text"][0] == '\t' ||
+          rest[i]["text"].length < 80) {
+        rest.removeAt(i);
+        print(rest[0]["text"].length);
+      }
+    }
     print(rest[1]["text"]);
     print('longueur de liste : {$rest.length}');
     tweets = rest.map<Tweet>((json) => Tweet.fromJson(json)).toList();
+
     return tweets;
   } else {
-
     throw Exception('Failed to load tweets');
   }
 }
 
 class Tweet {
-
   final String id;
   final String text;
 
@@ -60,7 +76,6 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
     futureTweet = fetchTweets();
   }
 
-
   Widget listViewWidget(List<Tweet> tweets) {
     return Container(
       child: ListView.builder(
@@ -72,9 +87,9 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
                 title: Text(
                   tweets[position].text,
                   style: const TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.black,
-                      //fontWeight: FontWeight.bold
+                    fontSize: 18.0,
+                    color: Colors.black,
+                    //fontWeight: FontWeight.bold
                   ),
                 ),
               ),
@@ -83,12 +98,8 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
     );
   }
 
-
-
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       body: Center(
         child: FutureBuilder<List<Tweet>>(
           future: futureTweet,
@@ -105,7 +116,5 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
         ),
       ),
     );
-
   }
 }
-

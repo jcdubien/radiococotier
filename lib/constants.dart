@@ -14,3 +14,8 @@ const kRecruitColor = Color(0XFFFF4841);
 const kContactColor = Color(0XFF52AD77);
 const kDigitalisColor = Color(0XFF1AA5FF);
 const TextStyle kDrawerMenuStyle = TextStyle(color: Colors.white,fontSize: 24.0,fontWeight: FontWeight.bold);
+const TextStyle kStandardText = TextStyle(
+  fontSize: 18.0,
+  color: Colors.black,
+  //fontWeight: FontWeight.bold
+);

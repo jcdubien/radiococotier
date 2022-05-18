@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/widgets.dart';
@@ -15,6 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'view_rss_feed.dart';
 import '../constants.dart';
+import 'package:radio_coctier/constants.dart';
 import 'package:radio_coctier/custom_widgets.dart';
 
 
@@ -121,7 +120,7 @@ class _FirstScreenState extends State<FirstScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
                             leading:  Image(image: CachedNetworkImageProvider(item.content!.images.first.toString(),)),
-                            title: Text(item.title.toString()),
+                            title: Text(item.title.toString(),style: kStandardText),
                             subtitle:Row(
                               children: [
                                 const Icon(Ionicons.time_outline),
