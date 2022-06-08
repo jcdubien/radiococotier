@@ -43,8 +43,8 @@ class AboutScreen extends StatelessWidget {
             " editorialistes , codeurs , et plus encore , au service des "
             "populations de nos trois territoires ",),
         TextPanel(text: "Nos équipes sont basées dans chaque territoire ,"
-    "avec pour chacun d'entre eux , des déclinaisons sportives"
-    "culturelles et générales pour être au plus proche de vos attentes ,"
+    "avec pour chacun d'entre eux , des déclinaisons sportives, "
+    "culturelles, pour être au plus proche de vos attentes ,"
     "en temps réel "),
 
 

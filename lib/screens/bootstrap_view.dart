@@ -129,15 +129,15 @@ class _BootstrapState extends State<Bootstrap> {
             ),*/
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Accueil',
+              label: 'Articles',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.newspaper_rounded),
-              label: 'News',
+              label: 'Hot',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.contact_page),
-              label: 'Nous contacter',
+              label: 'Contact',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.contact_mail),

@@ -31,7 +31,8 @@ Future<List<Tweet>> fetchTweets() async {
           rest[i]["text"][0] == ',' ||
           rest[i]["text"][0] == '\n' ||
           rest[i]["text"][0] == '\t' ||
-          rest[i]["text"].length < 80) {
+          rest[i]["text"].length < 80 ||
+          (rest[i]["text"][0] == 'R' && rest[i]["text"][1] == 'T' )){
         rest.removeAt(i);
         print(rest[0]["text"].length);
       }
