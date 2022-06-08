@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -10,7 +9,7 @@ String token =
 Future<List<Tweet>> fetchTweets() async {
   List<Tweet> tweets = [];
   final response = await http.get(
-    Uri.parse('https://api.twitter.com/2/users/1124645917171359745/tweets'),
+    Uri.parse('https://api.twitter.com/2/users/1474395836687822849/tweets'),
     headers: {
       "Content-Type": "application/json",
       'Authorization': 'Bearer $token',
@@ -31,7 +30,7 @@ Future<List<Tweet>> fetchTweets() async {
           rest[i]["text"][0] == ',' ||
           rest[i]["text"][0] == '\n' ||
           rest[i]["text"][0] == '\t' ||
-          rest[i]["text"].length < 80) {
+          rest[i]["text"].length < 80 ) {
         rest.removeAt(i);
         print(rest[0]["text"].length);
       }
@@ -60,14 +59,14 @@ class Tweet {
   }
 }
 
-class LastNewsScreen extends StatefulWidget {
-  const LastNewsScreen({Key? key}) : super(key: key);
+class SportScreen extends StatefulWidget {
+  const SportScreen({Key? key}) : super(key: key);
 
   @override
-  State<LastNewsScreen> createState() => _LastNewsScreenState();
+  State<SportScreen> createState() => _SportScreenState();
 }
 
-class _LastNewsScreenState extends State<LastNewsScreen> {
+class _SportScreenState extends State<SportScreen> {
   late Future<List<Tweet>> futureTweet;
 
   @override
@@ -77,24 +76,35 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
   }
 
   Widget listViewWidget(List<Tweet> tweets) {
-    return Container(
-      child: ListView.builder(
-          itemCount: tweets.length,
-          padding: const EdgeInsets.all(2.0),
-          itemBuilder: (context, position) {
-            return Card(
-              child: ListTile(
-                title: Text(
-                  tweets[position].text,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.black,
-                    //fontWeight: FontWeight.bold
+    return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back),
+        ),
+        title: Text('RC SPORTS'),
+      ),
+      body: Container(
+        child: ListView.builder(
+            itemCount: tweets.length,
+            padding: const EdgeInsets.all(2.0),
+            itemBuilder: (context, position) {
+              return Card(
+                child: ListTile(
+                  title: Text(
+                    tweets[position].text,
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black,
+                      //fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 

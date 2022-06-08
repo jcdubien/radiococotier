@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:radio_coctier/constants.dart';
-import 'package:radio_coctier/screens/rss_feed.dart';
-import 'screens/vidéos.dart';
-import 'screens/rss_feed.dart';
-import 'package:flutter_launcher_icons/constants.dart';
+import 'package:radiocotier2/screens/culture_view.dart';
+import 'package:radiocotier2/screens/press_view.dart';
+import 'package:radiocotier2/screens/sport_view.dart';
+import 'package:radiocotier2/screens/guyane_view.dart';
+import '../constants.dart';
+
 
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({
@@ -82,7 +83,7 @@ class BottomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-            primary: Color(0XFF18785D).withOpacity(0.8),
+            primary: const Color(0XFF18785D).withOpacity(0.8),
             onSurface: Colors.red,
             elevation: 8.0,
             shape:  const RoundedRectangleBorder(
@@ -98,7 +99,7 @@ class BottomButton extends StatelessWidget {
               (context) => linkScreen,
               ))
         },
-        label: Text(titleButton,style:TextStyle(fontSize: 8.0)),
+        label: Text(titleButton,style:const TextStyle(fontSize: 8.0)),
     );
 
   }
@@ -146,40 +147,68 @@ class _CustomDrawerState extends State<CustomDrawer> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
 
-            children: [
+            children:  const [
 
-              const SizedBox(height: 50.0),
+              SizedBox(height: 50.0),
 
 
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical:  20.0),
-                child: ListTile(
-                  title: const Text('Emissions',style: kDrawerMenuStyle),
-                  leading: Icon(Icons.youtube_searched_for,color: Colors.white,),
-
-                  onTap: () {
-                    // Update the state of the app.
-                    // ...
-                    Navigator.pop(context);
-                  },
-                ),
+              DrawerIcon(
+                icon: Icons.sports,
+                title: 'RC SPORTS',
+                destination: SportScreen(),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical:  20.0),
-                child: ListTile(
-                  title: const Text('Recrutement',style: kDrawerMenuStyle),
-                  leading: Icon(Icons.work,color: Colors.white,),
-
-                  onTap: () {
-                    //Navigator.push(context, route)
-                    Navigator.pop(context);
-                  },
-                ),
+              DrawerIcon(
+                  icon: Icons.music_note,
+                  title: 'RC CULTURE - AN BA FEY',
+                  destination: CultureScreen(),
+              ),
+              DrawerIcon(
+                icon: Icons.sunny,
+                title: 'RC GUYANE',
+                destination: GuyaneScreen(),
+              ),
+              DrawerIcon(
+                icon: Icons.wordpress,
+                title: 'RC PRESSE',
+                destination: PressScreen(),
               ),
             ],
           ),
 
         ],
+      ),
+    );
+  }
+}
+
+class DrawerIcon extends StatelessWidget {
+  const DrawerIcon({
+    required this.icon,
+    required this.title,
+    required this.destination,
+
+    Key? key,
+  }) : super(key: key);
+  final String title;
+  final Widget destination;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical:  20.0),
+      child: ListTile(
+        title:  Text(title,style: kDrawerMenuStyle),
+        leading: Icon(icon,color: Colors.white),
+
+        onTap: () {
+          // Update the state of the app.
+          // ...
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => destination,));
+          //Navigator.pop(context);
+        },
       ),
     );
   }

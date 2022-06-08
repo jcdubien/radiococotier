@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
+//import 'package:dart_twitter_api/twitter_api.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import '../constants.dart';
 
 String token =
     'AAAAAAAAAAAAAAAAAAAAADFhbQEAAAAA27dk1f9HiqIEKT9ji0ts4p1V1eU%3DY4G9hPONN9D1EVKmt2fqqmj9NP2EHL9YWwdz8WWushzWzXeAWP';
@@ -10,7 +10,7 @@ String token =
 Future<List<Tweet>> fetchTweets() async {
   List<Tweet> tweets = [];
   final response = await http.get(
-    Uri.parse('https://api.twitter.com/2/users/1124645917171359745/tweets'),
+    Uri.parse('https://api.twitter.com/2/users/1470156613529083915/tweets'),
     headers: {
       "Content-Type": "application/json",
       'Authorization': 'Bearer $token',
@@ -31,7 +31,8 @@ Future<List<Tweet>> fetchTweets() async {
           rest[i]["text"][0] == ',' ||
           rest[i]["text"][0] == '\n' ||
           rest[i]["text"][0] == '\t' ||
-          rest[i]["text"].length < 80) {
+          rest[i]["text"].length < 80 ||
+       (rest[i]["text"][0] == 'R' && rest[i][0] == 'T' )                           ){
         rest.removeAt(i);
         print(rest[0]["text"].length);
       }
@@ -60,14 +61,14 @@ class Tweet {
   }
 }
 
-class LastNewsScreen extends StatefulWidget {
-  const LastNewsScreen({Key? key}) : super(key: key);
+class PressScreen extends StatefulWidget {
+  const PressScreen({Key? key}) : super(key: key);
 
   @override
-  State<LastNewsScreen> createState() => _LastNewsScreenState();
+  State<PressScreen> createState() => _PressScreenState();
 }
 
-class _LastNewsScreenState extends State<LastNewsScreen> {
+class _PressScreenState extends State<PressScreen> {
   late Future<List<Tweet>> futureTweet;
 
   @override
@@ -77,24 +78,35 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
   }
 
   Widget listViewWidget(List<Tweet> tweets) {
-    return Container(
-      child: ListView.builder(
-          itemCount: tweets.length,
-          padding: const EdgeInsets.all(2.0),
-          itemBuilder: (context, position) {
-            return Card(
-              child: ListTile(
-                title: Text(
-                  tweets[position].text,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.black,
-                    //fontWeight: FontWeight.bold
+    return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back),
+        ),
+        title: Text("RC DOCUMENTATION"),
+      ),
+      body: Container(
+        child: ListView.builder(
+            itemCount: tweets.length,
+            padding: const EdgeInsets.all(2.0),
+            itemBuilder: (context, position) {
+              return Card(
+                child: ListTile(
+                  title: Text(
+                    tweets[position].text,
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black,
+                      //fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 

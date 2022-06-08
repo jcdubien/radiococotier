@@ -1,12 +1,11 @@
-import 'dart:async';
-import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'rss_feed.dart';
+
 import 'package:intl/intl.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:radio_coctier/custom_widgets.dart';
+
 import 'bootstrap_view.dart';
 
 class ViewRssScreen extends StatefulWidget {

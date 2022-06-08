@@ -10,7 +10,7 @@ String token =
 Future<List<Tweet>> fetchTweets() async {
   List<Tweet> tweets = [];
   final response = await http.get(
-    Uri.parse('https://api.twitter.com/2/users/1124645917171359745/tweets'),
+    Uri.parse('https://api.twitter.com/2/users/1470156613529083915/tweets'),
     headers: {
       "Content-Type": "application/json",
       'Authorization': 'Bearer $token',
@@ -60,14 +60,14 @@ class Tweet {
   }
 }
 
-class LastNewsScreen extends StatefulWidget {
-  const LastNewsScreen({Key? key}) : super(key: key);
+class GuyaneScreen extends StatefulWidget {
+  const GuyaneScreen({Key? key}) : super(key: key);
 
   @override
-  State<LastNewsScreen> createState() => _LastNewsScreenState();
+  State<GuyaneScreen> createState() => _GuyaneScreenState();
 }
 
-class _LastNewsScreenState extends State<LastNewsScreen> {
+class _GuyaneScreenState extends State<GuyaneScreen> {
   late Future<List<Tweet>> futureTweet;
 
   @override
@@ -77,24 +77,35 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
   }
 
   Widget listViewWidget(List<Tweet> tweets) {
-    return Container(
-      child: ListView.builder(
-          itemCount: tweets.length,
-          padding: const EdgeInsets.all(2.0),
-          itemBuilder: (context, position) {
-            return Card(
-              child: ListTile(
-                title: Text(
-                  tweets[position].text,
-                  style: const TextStyle(
-                    fontSize: 18.0,
-                    color: Colors.black,
-                    //fontWeight: FontWeight.bold
+    return Scaffold(
+      appBar: AppBar(
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(Icons.arrow_back),
+        ),
+        title: Text("RC GUYANE"),
+      ),
+      body: Container(
+        child: ListView.builder(
+            itemCount: tweets.length,
+            padding: const EdgeInsets.all(2.0),
+            itemBuilder: (context, position) {
+              return Card(
+                child: ListTile(
+                  title: Text(
+                    tweets[position].text,
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black,
+                      //fontWeight: FontWeight.bold
+                    ),
                   ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+      ),
     );
   }
 

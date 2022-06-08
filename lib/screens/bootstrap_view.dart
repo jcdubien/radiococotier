@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:radio_coctier/custom_widgets.dart';
-import 'package:flutter_launcher_icons/constants.dart';
+import '../custom_widgets.dart';
+
 import 'rss_feed.dart';
-import'contact_screen.dart';
+import 'contact_screen.dart';
 import 'about_screen.dart';
-import 'categories_screen.dart';
+
 import 'package:webfeed/webfeed.dart';
-import 'package:radio_coctier/constants.dart';
+import '../constants.dart';
 import 'package:http/http.dart';
 import 'last_news.dart';
+
 
 class Bootstrap extends StatefulWidget {
   const Bootstrap({Key? key}) : super(key: key);
@@ -18,11 +19,11 @@ class Bootstrap extends StatefulWidget {
 }
 
 class _BootstrapState extends State<Bootstrap> {
-
-  int _selectedIndex=1;
-  bool isLoading=false;
-  late RssFeed rss=RssFeed();
+  int _selectedIndex = 1;
+  bool isLoading = false;
+  late RssFeed rss = RssFeed();
   //final PageController _pageController = PageController(initialPage: 1);
+
   final screens = [
     //CategoriesScreen(),
     FirstScreen(title: 'Derniers Posts'),
@@ -31,36 +32,30 @@ class _BootstrapState extends State<Bootstrap> {
     AboutScreen(),
   ];
 
-
-
   @override
   void initState() {
-
     super.initState();
     loadData();
   }
 
-
-
   loadData() async {
     try {
       setState(() {
-        isLoading=true;
+        isLoading = true;
       });
       // This is an open REST API endpoint for testing purposes
       const API = kRssUrl;
-      final  response = await get(Uri.parse(API));
+      final response = await get(Uri.parse(API));
       late var channel = RssFeed.parse(response.body);
 
       setState(() {
-        rss=channel;
-        isLoading=false;
+        rss = channel;
+        isLoading = false;
       });
     } catch (err) {
       rethrow;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +68,10 @@ class _BootstrapState extends State<Bootstrap> {
           ),
         ),
         title: SizedBox(
-
-          child: Image.asset('assets/Bleu-alpha3.png',fit: BoxFit.cover,),
-
+          child: Image.asset(
+            'assets/Bleu-alpha3.png',
+            fit: BoxFit.cover,
+          ),
         ),
 
         /*title: Column(
@@ -87,14 +83,13 @@ class _BootstrapState extends State<Bootstrap> {
 
         centerTitle: true,
       ),
-      drawer:
-      Container(
-
+      drawer: Container(
           decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/Tel-bleu1.png"),
-                fit: BoxFit.cover,
-              ),),
+            image: DecorationImage(
+              image: AssetImage("assets/FondRecbleu.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: const CustomDrawer()),
       body: screens[_selectedIndex],
       /*PageView(
@@ -110,7 +105,7 @@ class _BootstrapState extends State<Bootstrap> {
 
         ],*/
 
-        /*onPageChanged: (page) {
+      /*onPageChanged: (page) {
           setState(() {
             _selectedIndex = page;
 
@@ -118,18 +113,15 @@ class _BootstrapState extends State<Bootstrap> {
         }
       ),*/
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.teal,
+          selectedItemColor: Colors.teal,
           unselectedItemColor: Colors.black,
           currentIndex: _selectedIndex,
-          onTap : (int index) => setState(() {
-            _selectedIndex = index;
-            /*_pageController.jumpToPage(
+          onTap: (int index) => setState(() {
+                _selectedIndex = index;
+                /*_pageController.jumpToPage(
                 _selectedIndex);*/
-
-          }),
-
-          items: const <BottomNavigationBarItem> [
-
+              }),
+          items: const <BottomNavigationBarItem>[
             /*BottomNavigationBarItem(
                 icon: Icon(Icons.category),
                 label: 'Catégorie',
@@ -137,8 +129,9 @@ class _BootstrapState extends State<Bootstrap> {
             ),*/
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              label: 'Accueil',),
-              BottomNavigationBarItem(
+              label: 'Accueil',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.newspaper_rounded),
               label: 'News',
             ),
@@ -150,9 +143,7 @@ class _BootstrapState extends State<Bootstrap> {
               icon: Icon(Icons.contact_mail),
               label: 'A propos',
             ),
-          ]
-
-      ),
+          ]),
     );
   }
 }

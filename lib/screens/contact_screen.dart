@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -107,7 +106,8 @@ class ContactScreen extends StatelessWidget {
                           scheme: 'mailto',
                           path: 'jcdubien@gmail.com',
                           query: encodeQueryParameters(<String, String>{
-                            'subject': messageController.text
+                            'message': messageController.text,
+
                           }),
                         );
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'screens/rss_feed.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:radio_coctier/screens/bootstrap_view.dart';
+import '../screens/bootstrap_view.dart';
 
 
 
@@ -10,10 +10,12 @@ import 'package:radio_coctier/screens/bootstrap_view.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   //MobileAds.instance.initialize();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,7 +48,7 @@ class SplashScreenState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5),
+    Timer(Duration(seconds: 1),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 //(context) => const FirstScreen(title: 'Derniers posts')
