@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "498122094051",
+    "project_id": "radio-cocotier",
+    "storage_bucket": "radio-cocotier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498122094051:android:cb94bdf76b6345fa295cd6",
+        "android_client_info": {
+          "package_name": "com.digitaliscaraibes.radiococotier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498122094051-m63puq832ka74pf428nhpdfdj5jquciq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl74i_oe8FDQGpRrX4208s_NFaiV0D3aA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498122094051-m63puq832ka74pf428nhpdfdj5jquciq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "498122094051-i4edl9gfa3g0840o9gkm4vvgisrm140t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.digitaliscaraibes.radioCocotier"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

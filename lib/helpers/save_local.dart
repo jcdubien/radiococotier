@@ -8,7 +8,7 @@ class SaveLocal {
 
   Future<File> get fileFeed async {
     Directory dir = await getApplicationDocumentsDirectory();
-    File file = File(dir.path + "/feeds.json");
+    File file = File("${dir.path}/feeds.json");
     if (!file.existsSync()) {
       await file.writeAsString(json.encode([]));
     }

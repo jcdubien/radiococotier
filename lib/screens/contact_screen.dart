@@ -113,8 +113,8 @@ class ContactScreen extends StatelessWidget {
 
                         launch(emailLaunchUri.toString());
 
-                        final snackBar = SnackBar(
-                            content: const Text('Message envoyé'),
+                        const snackBar = SnackBar(
+                            content: Text('Message envoyé'),
                             /*action: SnackBarAction(
                             label: 'Undo',
                             onPressed: () {

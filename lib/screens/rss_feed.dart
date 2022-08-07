@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
-import 'package:flutter/widgets.dart';
 
 import 'package:webfeed/webfeed.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -43,7 +42,7 @@ class _FirstScreenState extends State<FirstScreen> {
   bool isAdVisible=true;
   bool isLoading=false;
   late RssFeed rss=RssFeed();
-  int _selectedIndex=1;
+  final int _selectedIndex=1;
 
 
 
@@ -133,7 +132,7 @@ class _FirstScreenState extends State<FirstScreen> {
                           ),
                         )
                     ),
-                    Divider(),
+                    const Divider(),
                   ],
                 );
               }

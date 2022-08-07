@@ -26,10 +26,10 @@ class _BootstrapState extends State<Bootstrap> {
 
   final screens = [
     //CategoriesScreen(),
-    FirstScreen(title: 'Derniers Posts'),
-    LastNewsScreen(),
+    const FirstScreen(title: 'Derniers Posts'),
+    const LastNewsScreen(),
     ContactScreen(),
-    AboutScreen(),
+    const AboutScreen(),
   ];
 
   @override

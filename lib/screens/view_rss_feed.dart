@@ -10,11 +10,11 @@ import 'bootstrap_view.dart';
 
 class ViewRssScreen extends StatefulWidget {
   final  RssFeed;
-  ViewRssScreen({Key? key, required this.RssFeed}) : super(key: key);
+  const ViewRssScreen({Key? key, required this.RssFeed}) : super(key: key);
 
 
   @override
-  State<ViewRssScreen> createState() => _ViewRssScreenState(this.RssFeed);
+  State<ViewRssScreen> createState() => _ViewRssScreenState(RssFeed);
 }
 
 class _ViewRssScreenState extends State<ViewRssScreen> {
@@ -29,10 +29,10 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon:Icon(Ionicons.arrow_back),
+          icon:const Icon(Ionicons.arrow_back),
           onPressed: ()=> Navigator.pushReplacement(context,
               MaterialPageRoute(builder:
-                  (context) => Bootstrap(),
+                  (context) => const Bootstrap(),
               )
           ),
         ),
@@ -55,37 +55,37 @@ class _ViewRssScreenState extends State<ViewRssScreen> {
                         color: Colors.black12
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Text(RssFeed['title'],
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Row(
                     children: [
-                      Icon(Ionicons.time_outline),
+                      const Icon(Ionicons.time_outline),
                       Text(DateFormat('MMM dd').format(
                           DateTime.parse(
                               RssFeed['pubDate'].toString()))),
-                      Spacer(),
-                      Icon(Ionicons.person_outline),
+                      const Spacer(),
+                      const Icon(Ionicons.person_outline),
                       Text(RssFeed['author'])
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ElevatedButton.icon(onPressed:() => launch(RssFeed['link']),
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0XFF18785D),
+                          primary: const Color(0XFF18785D),
                           onSurface: Colors.red,
                         ),
-                        icon: Icon(Ionicons.link),
-                        label: Text('Voir sur RadioCocotier.fr')),
+                        icon: const Icon(Ionicons.link),
+                        label: const Text('Voir sur RadioCocotier.fr')),
                   ),
-                  SizedBox(height: 15,),
+                  const SizedBox(height: 15,),
                   Html(
                     data: RssFeed['content'],
                   )

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>498122094051-nak168jhvqqttoati02lbl9iiboum8v3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.498122094051-nak168jhvqqttoati02lbl9iiboum8v3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB0aiLH2rFmBaS4DhtpKihoFgEMOb7Qtes</string>
+	<key>GCM_SENDER_ID</key>
+	<string>498122094051</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.digitaliscaraibes.radiococotierapp</string>
+	<key>PROJECT_ID</key>
+	<string>radio-cocotier</string>
+	<key>STORAGE_BUCKET</key>
+	<string>radio-cocotier.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:498122094051:ios:8bf859a5ae589fdb295cd6</string>
+</dict>
+</plist>

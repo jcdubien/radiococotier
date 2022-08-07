@@ -98,6 +98,7 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -111,7 +112,7 @@ class _LastNewsScreenState extends State<LastNewsScreen> {
             }
 
             // By default, show a loading spinner.
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

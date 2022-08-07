@@ -7,12 +7,12 @@ class NewsModel {
   final String? author;
 
   NewsModel({
-    String? this.title ,
-    String? this.content ,
-    String? this.image,
-    String? this.link,
-    String? this.pubDate,
-    String? this.author});
+    this.title ,
+    this.content ,
+    this.image,
+    this.link,
+    this.pubDate,
+    this.author});
 }
 
 

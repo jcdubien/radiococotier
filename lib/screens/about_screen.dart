@@ -33,7 +33,7 @@ class AboutScreen extends StatelessWidget {
           LinkTreeButton(
               url: 'http://radiococotier.fr',
               logo:'Logo vert.jpeg',
-              text:'notre site internet'
+              text:'notre site'
           ),
 
         TextPanel(text :  "Notre réseau d'information couvre la Martinique , "
@@ -62,13 +62,24 @@ class TextPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(width: 1.0),
-
-
-        ),
+          decoration:  BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: const [
+               //background color of box
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 10.0, // soften the shadow
+                spreadRadius: 3.0, //extend the shadow
+                offset: Offset(
+                  8.0, // Move to right 10  horizontally
+                  8.0, // Move to bottom 10 Vertically
+                ),
+              )
+            ],
+          ),
 
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -100,7 +111,7 @@ class LinkTreeButton extends StatelessWidget {
               height: 30.0,
               width: 30.0,
             ),
-            SizedBox(width: 10.0),
+            const SizedBox(width: 10.0),
             Text('Suivez nous sur ${text.toUpperCase()}'),
           ],
         ),

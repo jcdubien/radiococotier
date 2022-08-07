@@ -1,17 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'screens/rss_feed.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../screens/bootstrap_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 
 
 
 
-void main() {
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //MobileAds.instance.initialize();
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -24,9 +30,9 @@ class MyApp extends StatelessWidget {
       // UI
       primarySwatch: Colors.blue,
       brightness: Brightness.light,
-      primaryColor: Color(0XFF18785D),
-      scaffoldBackgroundColor: Color(0XFFFFFFFF),
-      appBarTheme: AppBarTheme().copyWith(backgroundColor: const Color(0XFFD3D4D6)),
+      primaryColor: const Color(0XFF18785D),
+      scaffoldBackgroundColor: const Color(0XFFFFFFFF),
+      appBarTheme: const AppBarTheme().copyWith(backgroundColor: const Color(0XFFD3D4D6)),
       fontFamily: 'Montserrat',
 
 
@@ -48,7 +54,7 @@ class SplashScreenState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 1),
+    Timer(const Duration(seconds: 1),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 //(context) => const FirstScreen(title: 'Derniers posts')

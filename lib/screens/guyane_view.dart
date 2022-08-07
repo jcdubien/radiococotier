@@ -84,9 +84,9 @@ class _GuyaneScreenState extends State<GuyaneScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
-        title: Text("RC GUYANE"),
+        title: const Text("RC GUYANE"),
       ),
       body: Container(
         child: ListView.builder(
@@ -110,6 +110,7 @@ class _GuyaneScreenState extends State<GuyaneScreen> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -123,7 +124,7 @@ class _GuyaneScreenState extends State<GuyaneScreen> {
             }
 
             // By default, show a loading spinner.
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

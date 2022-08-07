@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:radiocotier2/screens/culture_view.dart';
-import 'package:radiocotier2/screens/press_view.dart';
+
 import 'package:radiocotier2/screens/sport_view.dart';
 import 'package:radiocotier2/screens/guyane_view.dart';
 import '../constants.dart';
@@ -17,11 +16,11 @@ class CustomBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    int _selectedindex = 0;
+    int selectedindex = 0;
 
     return BottomNavigationBar(
 
-      currentIndex: _selectedindex,
+      currentIndex: selectedindex,
 
       //backgroundColor: kPrimaryColor,
       elevation : 8.0,
@@ -73,7 +72,7 @@ class CustomBottomAppBar extends StatelessWidget {
 
 class BottomButton extends StatelessWidget {
 
-  BottomButton(this.titleButton, this.icone,this.linkScreen  );
+  const BottomButton(this.titleButton, this.icone,this.linkScreen  );
 
   final String titleButton;
   final IconData icone;
@@ -167,11 +166,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 title: 'RC GUYANE',
                 destination: GuyaneScreen(),
               ),
-              DrawerIcon(
-                icon: Icons.wordpress,
-                title: 'RC PRESSE',
-                destination: PressScreen(),
-              ),
+
             ],
           ),
 

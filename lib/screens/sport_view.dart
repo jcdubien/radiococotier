@@ -83,9 +83,9 @@ class _SportScreenState extends State<SportScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
-        title: Text('RC SPORTS'),
+        title: const Text('RC SPORTS'),
       ),
       body: Container(
         child: ListView.builder(
@@ -109,6 +109,7 @@ class _SportScreenState extends State<SportScreen> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -122,7 +123,7 @@ class _SportScreenState extends State<SportScreen> {
             }
 
             // By default, show a loading spinner.
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

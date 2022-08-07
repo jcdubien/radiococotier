@@ -85,9 +85,9 @@ class _CultureScreenState extends State<CultureScreen> {
             Navigator.pop(context);
           },
 
-            child: Icon(Icons.arrow_back),
+            child: const Icon(Icons.arrow_back),
         ),
-        title: Text('RC CULTURE'),
+        title: const Text('RC CULTURE'),
       ),
       body: Container(
         child: ListView.builder(
@@ -111,6 +111,7 @@ class _CultureScreenState extends State<CultureScreen> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -124,7 +125,7 @@ class _CultureScreenState extends State<CultureScreen> {
             }
 
             // By default, show a loading spinner.
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),
